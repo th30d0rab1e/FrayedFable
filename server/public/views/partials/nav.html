@@ -1,0 +1,16 @@
+<div ng-controller = "UserController as uc" class="navbar">
+  <div class="container">
+    <ul>
+      <li><a href="#/user">Home</a></li>
+      <li><a href="#/info">Profile Info</a></li>
+      <li><a href="#/currentneeds">Current Cart </a></li>
+      <li><a href="#/updateneed"> Update your need request </a></li>
+      <li><a href="#/thankyou">View your request</a></li>
+    </ul>
+  </div>
+
+
+  <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+
+
+</div>

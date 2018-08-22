@@ -1,0 +1,48 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<!-- {{uc.userObject.details}}
+{{uc.user}} -->
+<div class="container">
+
+    <h1 id="welcome" class="lead">Welcome, {{uc.userService.userObject.details.username }}!</h1>
+    <br>
+    
+    <md-button class="md-raised md-primary" ng-click="showme = !showme"> I Need Help </md-button>
+    <md-button ng-href="#/help" class="md-raised md-primary"> I Want To Help </md-button>
+    <div layout="row" layout-padding ng-show="showme">
+        {{uc.user_id}}
+        <md-card>
+        <form ng-submit="uc.userInformation()">
+            <md-input-container class="md-block">
+                <label for="lastname">Enter a First Name:</label>
+                <input type="text" ng-model="uc.user.firstname" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label for="lastname">Enter a Last Name:</label>
+                <input type="text" ng-model="uc.user.lastname" />
+            </md-input-container>
+            <md-input-container class="md-block">
+
+                <input places-auto-complete size=40 ng-model="uc.user.address.formatted_address" component-restrictions="{country:'us'}" on-place-changed="uc.placeChanged()"
+                />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label for="lastname">Enter a Household size:</label>
+                <input type="number" ng-model="uc.user.householdsize" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label for="lastname">Enter a Phone number:</label>
+                <input type="number" ng-model="uc.user.phonenumber" />
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit"> Submit Information</md-button>
+        </form>
+        </md-card>
+
+       
+
+    </div>
+
+    <br>
+
+    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+
+</div>

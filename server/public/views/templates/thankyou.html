@@ -1,0 +1,59 @@
+<div ng-include="'views/partials/nav.html'"></div>
+
+
+<div class='container'>
+
+
+    <!-- "["+{{variable1}}+", "+{{variable2}}+"]" -->
+
+    <h4>Thank you for submitting your request</h4>
+
+    {{tc.userNeeds.needs}}
+
+    <!-- {{tc.markerLocationLatitude}}
+    {{tc.markerLocationLongitude}} -->
+
+    <div ng-if="tc.userLocation.coordinates[0].longitude && tc.userLocation.coordinates[0].latitude">
+
+        <ng-map default-style="true" id="map" class='map_canvas' center="[44.97, -93.26]" zoom="10">
+            <marker on-click="tc.showDeets(tc.userInformationObject.list[0])" position="{{tc.userLocation.coordinates[0].latitude}}, {{tc.userLocation.coordinates[0].longitude}}"></marker>
+            <info-window id='InfoWindow'>
+                <div ng-non-bindable="">
+                    {{tc.userInformationObject.list[0].firstname}}
+                    <br> {{tc.userInformationObject.list[0].lastname}}
+                    <br> {{tc.userInformationObject.list[0].phonenumber}}
+                    <br> {{tc.userInformationObject.list[0].address}}
+                    <div ng-click="show = !show">Emergency Request: {{tc.userNeeds.needs[0].Need}}</div>
+
+                    <div ng-if="show">
+
+                        <div ng-repeat="needitems in tc.userNeeds.needs">
+                            <div ng-if="needitems.Groceries">
+                                {{needitems.Groceries}}
+                            </div>
+                            <div ng-if="needitems.Clothing">
+                                {{needitems.Clothing}}
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <br>
+                    <md-button class="md-secondary md-raised" ng-click="tc.deleteNeeds(tc.userNeeds.needs[0].user_id)">Need met!</md-button>
+
+                </div>
+            </info-window>
+        </ng-map>
+    </div>
+
+    <div ng-if="!tc.userLocation.coordinates.longitude && !tc.userLocation.coordinates[0].latitude">
+        Mhmm... there doesn't seem to be any profile information you registered.
+
+    </div>
+
+
+
+</div>
+
+<button type="button" onclick="window.location='#need'"> Go Back </button>

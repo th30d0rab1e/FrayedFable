@@ -1,0 +1,38 @@
+<div ng-include="'views/partials/userhelpnav.html'"></div>
+
+<h4>Here are all the user requests</h4>
+
+
+
+<div class='container'>
+
+    <ng-map default-style="true" id="map" class='map_canvas' center="[44.97, -93.26]" zoom="9">
+        <marker on-click="hc.showDeets(userhelp)" ng-repeat="userhelp in hc.allUserInformation.list" position="[ {{userhelp.latitude}}, {{userhelp.longitude}} ]"></marker>
+
+        <info-window id='InfoWindow'>
+            <div ng-non-bindable="">
+                <br> {{hc.allUserInformation.userhelp.firstname}}
+                <br> {{hc.allUserInformation.userhelp.lastname}}
+                <br> {{hc.allUserInformation.userhelp.phonenumber}}
+                <br> {{hc.allUserInformation.userhelp.address}}
+                <div ng-click="hc.allUserInformation.userhelp.show = !hc.allUserInformation.userhelp.show">Emergency Request: {{hc.allUserInformation.userhelp.need}}</div>
+
+                <div ng-if="hc.allUserInformation.userhelp.show">
+                    
+                         <div ng-repeat="grocery in hc.allUserInformation.userhelp.array_agg">
+                            {{grocery}}
+                        
+                        </div> 
+
+       
+                    </div>
+
+
+                </div>
+
+            </div>
+        </info-window>
+
+    </ng-map>
+
+</div>

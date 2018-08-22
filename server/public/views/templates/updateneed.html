@@ -1,0 +1,61 @@
+<div ng-include="'views/partials/nav.html'"></div>
+
+
+<md-input-container>
+    <label>Please Select A Need Below</label>
+    <md-select ng-model="nc.userNeed.Need">
+        <md-option ng-repeat="need in nc.needs.list" ng-value="need">
+            {{need}}
+        </md-option>
+    </md-select>
+</md-input-container>
+
+<div ng-show="nc.userNeed.Need === 'Groceries'">
+    <h5>In the field below, please input grocery items you need: </h5>
+    <h6>Please be specific </h6>
+    <label>Grocery Items: <input type="input" ng-model="nc.userNeed.Groceries"></label>
+    <!-- <label><input type="checkbox" checklist-model="nc.userNeed.groceries" value="chicken">Chicken: </label> 
+    <label><Input type="checkbox" checklist-model="nc.userNeed.groceries" value="beef">Beef: </label> -->
+    <md-button class="md-primary md-raised" ng-click="nc.addingNeeds()"> Submit Needs </md-button>
+</div>
+
+
+<md-button type="button" class="md-secondary md-raised" onclick="window.location='#user'"> Go Back </md-button>
+
+
+
+<div ng-show="nc.userNeed.Need === 'Clothing'">
+    <h5>In the field below, please input clothing items you need: </h5>
+    <h5>Please be specific </h5>
+    <label>Clothing:</label>
+    <input type="input" ng-model="nc.userNeed.Clothing">
+    <md-button class="md-primary md-raised" ng-click="nc.addingNeeds()"> Submit Needs </md-button>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <md-input-container>
+    <label>Please Select A Need Below</label>
+    <md-select ng-model="nc.userNeed.need">
+        <md-option ng-repeat="need in nc.needs.list" ng-value="need">
+            {{need}}
+        </md-option>
+    </md-select>
+</md-input-container>
+
+<div ng-show="nc.userNeed.need === 'groceries'">
+    <h5>Select grocery items you need: </h5>
+    <h5>Meats: </h5>
+    <label><input type="checkbox" checklist-model="nc.userNeed.groceries" value="chicken">Chicken: </label>
+    <label><Input type="checkbox" checklist-model="nc.userNeed.groceries" value="beef">Beef: </label>
+    <button ng-click="nc.addingNeeds()"> Submit Needs </button>
+</div>
+
+
+<button type="button" onclick="window.location='#user'"> Go Back </button> -->
